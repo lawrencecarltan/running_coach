@@ -88,6 +88,3 @@ class StravaClient:
 
     def get_activity_zones(self, activity_id: int) -> dict:
         return self._get(f"/activities/{activity_id}/zones")
-    
-    def get_gears(self, gear_id: int) -> dict:
-        return self._get(f"/gear/{gear_id}")

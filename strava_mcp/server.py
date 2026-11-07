@@ -16,7 +16,7 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from mcp.server.mcpserver import MCPServer, Context
+from mcp.server.mcpserver import MCPServer
 
 from strava_mcp.strava_client import StravaClient
 
@@ -274,21 +274,6 @@ def get_activity_zones(activity_id: int) -> str:
             }
         )
 
-@mcp.tool()
-def get_gears(gear_id: int) -> str:
-    """Get information about a specific piece of gear.
-
-    Shows details about the gear, including brand, model, and usage statistics.
-    Useful for determining gear performance and maintenance needs."""
-    try:
-        return json.dumps(get_client().get_gears(gear_id))
-    except Exception as e:
-        return json.dumps(
-            {
-                "error": str(e),
-                "note": "Failed to retrieve gear information.",
-            }
-        )
 
 if __name__ == "__main__":
     mcp.run()
